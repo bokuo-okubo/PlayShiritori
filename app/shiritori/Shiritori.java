@@ -2,20 +2,13 @@ package shiritori;
 
 import play.mvc.Controller;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by bko on 6/28/15.
  */
 public class Shiritori extends Controller {
     private Map wordDictionary;
-    public static final String MATCH_HIRAGANA = "^[\\u3040-\\u309F]+$";
-    public static final String MATCH_KATAKANA = "^[\\u30A0-\\u30FF]+$";
-    public static final String MATCH_HANKANA = "^[\\uFF65-\\uFF9F]+$";
-    public static final String MATCH_ZENKAKU = "^[\\u3040-\\u30FF]+$";
 
     public Shiritori(){
         //TODO : read yaml, or some extarnal file.
@@ -27,7 +20,7 @@ public class Shiritori extends Controller {
         this.wordDictionary.put("あ",ary);
     }
 
-    public String shiritori(String lastWord) {
+    public String shiritori(String lastWord, Map<String,Set<String>> dictionary) {
         //TODO : check the word type カタカナ or ひらがな or the other.
         if (lastWord == null) {
             return "wrong operation in Shiritori";
@@ -35,7 +28,15 @@ public class Shiritori extends Controller {
             return "m9(゜Д ゜)お前は既に死んでいる";
         }
 
-        ArrayList<String> word_array = takeWordArray(lastWord);
+        //debug
+        char c = lastWord.charAt(lastWord.length() - 1) ;
+        lastWord = String.valueOf(c);
+        System.out.print("-----------" + c);
+        //-----
+        Set wordSet = takeWordArray(lastWord, dictionary);
+        List<String> word_array = new ArrayList<String>(wordSet);
+        System.out.println("--------------------------------" + lastWord);
+        System.out.println(word_array);
         if (word_array.size() > 0){
             Collections.shuffle(word_array);
             return word_array.get(0);
@@ -44,11 +45,13 @@ public class Shiritori extends Controller {
         }
     }
 
-    private ArrayList<String> takeWordArray(String key_word){
-        if (this.wordDictionary.containsKey(key_word)) {
-            return (ArrayList<String>) this.wordDictionary.get(key_word);
+    private Set<String> takeWordArray(String key_word,Map<String,Set<String>> dictionary){
+        if (dictionary.containsKey(key_word)) {
+            System.out.println( "==================================" +
+                    dictionary.get(key_word).getClass() );
+            return dictionary.get(key_word);
         }else{
-            return new ArrayList<String>();
+            return new HashSet<String>();
         }
     }
 }

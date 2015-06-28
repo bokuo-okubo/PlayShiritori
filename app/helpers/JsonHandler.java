@@ -7,6 +7,7 @@ import play.libs.Json;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -15,21 +16,16 @@ import java.util.Set;
 public class JsonHandler  {
     Person person = new Person();
 
-    public void parse(String jsonStr) throws IOException {
-        person.firstName = "Foo";
-        person.lastName = "Bar";
-        person.age = 30;
-        JsonNode personJson = Json.toJson(person);
-        System.out.println(personJson);
-
-        String json = "{\"id\":20, \"name\":\"HOGE\"}";
+    public Map<String,Set> parse(String jsonStr) throws IOException {
 
         ObjectMapper mapper = new ObjectMapper();
         try{
             HashMap<String,Set> result = mapper.readValue(jsonStr,HashMap.class);
             System.out.println(result);
+            return result;
         }catch (JsonParseException e){
             System.out.println(e);
+            return new HashMap<String,Set>();
         }
     }
 }

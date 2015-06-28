@@ -3,9 +3,11 @@ package controllers;
 import helpers.FileHandler;
 import helpers.JsonHandler;
 import play.mvc.*;
+import shiritori.Shiritori;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
 
 public class Application extends Controller {
 
@@ -29,10 +31,14 @@ public class Application extends Controller {
     public void debugging() throws IOException {
         FileHandler fh = new FileHandler();
         String str = fh.openFile("app/data/dictionary.json");
-        System.out.println(str);
+        //System.out.println(str);
 
         JsonHandler jh = new JsonHandler();
-        jh.parse(str);
+        Map json = jh.parse(str);
+        String word = "ほげ";
+        Shiritori shiritori = new Shiritori();
+        System.out.println( shiritori.shiritori(word, json) );
+
     }
 
 }

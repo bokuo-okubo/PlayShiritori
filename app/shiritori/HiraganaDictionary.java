@@ -10,6 +10,7 @@ import java.util.Set;
 public class HiraganaDictionary implements Dictionary {
 
     private Map<String,Set<String>> dictionary;
+
     public static final String MATCH_HIRAGANA = "^[\\u3040-\\u309F]+$";
     public static final String MATCH_KATAKANA = "^[\\u30A0-\\u30FF]+$";
     public static final String MATCH_HANKANA = "^[\\uFF65-\\uFF9F]+$";
