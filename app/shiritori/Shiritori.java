@@ -28,12 +28,7 @@ public class Shiritori extends Controller {
             return "m9(゜Д ゜)お前は既に死んでいる";
         }
 
-        //debug
-        char c = lastWord.charAt(lastWord.length() - 1) ;
-        lastWord = String.valueOf(c);
-        System.out.print("-----------" + c);
-        //-----
-        Set wordSet = takeWordArray(lastWord, dictionary);
+        Set wordSet = takeWordSet(lastWord, dictionary);
         List<String> word_array = new ArrayList<String>(wordSet);
         System.out.println("--------------------------------" + lastWord);
         System.out.println(word_array);
@@ -45,10 +40,9 @@ public class Shiritori extends Controller {
         }
     }
 
-    private Set<String> takeWordArray(String key_word,Map<String,Set<String>> dictionary){
+    private Set<String> takeWordSet(String key_word, Map<String,Set<String>> dictionary){
         if (dictionary.containsKey(key_word)) {
-            System.out.println( "==================================" +
-                    dictionary.get(key_word).getClass() );
+            dictionary.get(key_word);
             return dictionary.get(key_word);
         }else{
             return new HashSet<String>();

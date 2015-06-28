@@ -37,7 +37,9 @@ public class Application extends Controller {
         Map json = jh.parse(str);
         String word = "ほげ";
         Shiritori shiritori = new Shiritori();
-        System.out.println( shiritori.shiritori(word, json) );
+
+        String last_word = word.substring( word.length() - 1, word.length() );
+        System.out.println( shiritori.shiritori(last_word, json) );
 
     }
 
