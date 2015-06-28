@@ -35,11 +35,10 @@ public class Application extends Controller {
 
         JsonHandler jh = new JsonHandler();
         Map json = jh.parse(str);
-        String word = "ほげ";
+        String word = "じあ";
         Shiritori shiritori = new Shiritori();
 
-        String last_word = word.substring( word.length() - 1, word.length() );
-        System.out.println( shiritori.shiritori(last_word, json) );
+        System.out.println( shiritori.shiritori(word, json) );
 
     }
 

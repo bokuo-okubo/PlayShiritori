@@ -20,13 +20,15 @@ public class Shiritori extends Controller {
         this.wordDictionary.put("あ",ary);
     }
 
-    public String shiritori(String lastWord, Map<String,Set<String>> dictionary) {
+    public String shiritori(String word, Map<String,Set<String>> dictionary) {
         //TODO : check the word type カタカナ or ひらがな or the other.
-        if (lastWord == null) {
+        if ( word == null) {
             return "wrong operation in Shiritori";
-        }else if(lastWord == "ん" ){
+        }else if( word == "ん" ){
             return "m9(゜Д ゜)お前は既に死んでいる";
         }
+
+        String lastWord = cutLastWord(word);
 
         Set wordSet = takeWordSet(lastWord, dictionary);
         List<String> word_array = new ArrayList<String>(wordSet);
@@ -38,6 +40,11 @@ public class Shiritori extends Controller {
         }else{
             return "wrong operation in Shiritori : Keyword NotFound";
         }
+    }
+
+    private String cutLastWord(String word){
+        String last_word = word.substring( word.length() - 1, word.length() );
+        return last_word;
     }
 
     private Set<String> takeWordSet(String key_word, Map<String,Set<String>> dictionary){
