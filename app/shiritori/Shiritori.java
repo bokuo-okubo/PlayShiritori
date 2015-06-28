@@ -1,4 +1,6 @@
-package model;
+package shiritori;
+
+import play.mvc.Controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +10,7 @@ import java.util.Map;
 /**
  * Created by bko on 6/28/15.
  */
-public class Shiritori {
+public class Shiritori extends Controller {
     private Map wordDictionary;
     public static final String MATCH_HIRAGANA = "^[\\u3040-\\u309F]+$";
     public static final String MATCH_KATAKANA = "^[\\u30A0-\\u30FF]+$";
@@ -41,7 +43,7 @@ public class Shiritori {
             return "wrong operation in Shiritori : Keyword NotFound";
         }
     }
-    
+
     private ArrayList<String> takeWordArray(String key_word){
         if (this.wordDictionary.containsKey(key_word)) {
             return (ArrayList<String>) this.wordDictionary.get(key_word);
