@@ -14,6 +14,6 @@ public interface Dictionary {
     Map<String,Set<String>> addWord(String word);
 
     //add multiple words into dictionary with Set
-    Map<String,Set<String>> addWords(Set words);
+    //Map<String,Set<String>> addWords(Set words);
 
 }
