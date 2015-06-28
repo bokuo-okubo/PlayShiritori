@@ -25,7 +25,7 @@ public class HiraganaDictionary implements Dictionary {
         if ( !word.equals(MATCH_HIRAGANA) ){
             return dictionary;
         }
-        String firs_char = word.substring(0,1);
+        String firs_char = word.substring(0, 1);
         Set word_set = dictionary.get(firs_char);
         word_set.add(word);
         return dictionary;

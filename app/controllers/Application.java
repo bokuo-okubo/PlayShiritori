@@ -38,8 +38,7 @@ public class Application extends Controller {
         JsonHandler jh = new JsonHandler();
         Map json = jh.parse(str);
         String word = "じあ";
-        Shiritori shiritori = new Shiritori();
 
-        return shiritori.shiritori(word, json);
+        return Shiritori.shiritori(word, json);
     }
 }
