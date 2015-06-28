@@ -12,23 +12,25 @@ import java.util.Map;
 public class Application extends Controller {
 
     public Result index() {
+        return ok("api is working");
+    }
+
+    public Result shiritori(){
+        String body = "";
         try {
-            debugging();
+            body = debugging();
         }catch (FileNotFoundException e) {
             System.out.println(e);
         }catch (IOException e) {
             System.out.println(e);
         }
-        return ok("your api is ok");
-    }
 
-    public  Result shiritori(){
-        return ok();
+        return ok(body);
     }
 
 
     //TODO : delete
-    public void debugging() throws IOException {
+    public String debugging() throws IOException {
         FileHandler fh = new FileHandler();
         String str = fh.openFile("app/data/dictionary.json");
         //System.out.println(str);
@@ -38,8 +40,6 @@ public class Application extends Controller {
         String word = "じあ";
         Shiritori shiritori = new Shiritori();
 
-        System.out.println( shiritori.shiritori(word, json) );
-
+        return shiritori.shiritori(word, json);
     }
-
 }

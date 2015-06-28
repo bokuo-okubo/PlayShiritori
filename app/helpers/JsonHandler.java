@@ -2,12 +2,9 @@ package helpers;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import play.libs.Json;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -17,6 +14,7 @@ import java.util.Set;
  */
 public class JsonHandler  {
 
+    // input json form is should be:: {String: [String,String,..]}
     public Map parse(String jsonStr) throws IOException {
 
         ObjectMapper mapper = new ObjectMapper();
