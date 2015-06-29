@@ -1,5 +1,6 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import helpers.FileHandler;
 import helpers.JsonHandler;
 import play.mvc.*;
@@ -15,7 +16,7 @@ public class Application extends Controller {
         return ok("api is working");
     }
 
-    public Result shiritori(){
+    public Result randomword() {
         String body = "";
         try {
             body = debugging();
@@ -28,6 +29,24 @@ public class Application extends Controller {
         return ok(body);
     }
 
+    public Result shiritori() throws IOException {
+        JsonNode json = request().body().asJson();
+
+        if(json == null) {
+            return badRequest("Expecting Json data");
+        } else {
+            String message = json.findPath("post").findPath("message").textValue();
+            if(message == null) {
+                return badRequest("Missing parameter [name]");
+            } else {
+                FileHandler fh = new FileHandler();
+                String str = fh.openFile("app/data/dictionary.json");
+                JsonHandler jh = new JsonHandler();
+                Map dictionary = jh.parse(str);
+                return ok(Shiritori.shiritori(message, dictionary));
+            }
+        }
+    }
 
     //TODO : delete
     public String debugging() throws IOException {
