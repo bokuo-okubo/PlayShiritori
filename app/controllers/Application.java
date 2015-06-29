@@ -39,11 +39,17 @@ public class Application extends Controller {
             if(message == null) {
                 return badRequest("Missing parameter [name]");
             } else {
+                int idStr =json.findPath("post").findPath("account").findPath("id").intValue();
+                /////////////////////////////////////
                 FileHandler fh = new FileHandler();
                 String str = fh.openFile("app/data/dictionary.json");
                 JsonHandler jh = new JsonHandler();
                 Map dictionary = jh.parse(str);
-                return ok(Shiritori.shiritori(message, dictionary));
+
+                String reqponseWord = Shiritori.shiritori(message, dictionary);
+
+                String test = " { \"message\": "+reqponseWord +", \"replyTo\": "+ idStr + "}";
+                return ok(test);
             }
         }
     }
