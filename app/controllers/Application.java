@@ -6,8 +6,11 @@ import helpers.JsonHandler;
 import play.mvc.*;
 import shiritori.Shiritori;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 public class Application extends Controller {
@@ -19,7 +22,7 @@ public class Application extends Controller {
     public Result randomword() {
         String body = "";
         try {
-            body = debugging();
+            body = random();
         }catch (FileNotFoundException e) {
             System.out.println(e);
         }catch (IOException e) {
@@ -53,16 +56,32 @@ public class Application extends Controller {
         }
     }
 
-    //TODO : delete
-    public String debugging() throws IOException {
+    public String random() throws IOException {
         FileHandler fh = new FileHandler();
         String str = fh.openFile("app/data/dictionary.json");
-        //System.out.println(str);
 
         JsonHandler jh = new JsonHandler();
         Map json = jh.parse(str);
-        String word = "じあ";
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("あ");list.add("い");list.add("う");list.add("え");list.add("お");
+        list.add("か");list.add("が");list.add("き");list.add("ぎ");list.add("く");list.add("ぐ");list.add("け");list.add("げ");list.add("こ");list.add("ご");
+        list.add("さ");list.add("ざ");list.add("し");list.add("じ");list.add("す");list.add("ず");list.add("せ");list.add("ぜ");list.add("そ");list.add("ぞ");
+        list.add("た");list.add("だ");list.add("ち");list.add("ぢ");list.add("つ");list.add("づ");list.add("て");list.add("で");list.add("と");list.add("ど");
+        list.add("な");list.add("に");list.add("ぬ");list.add("ね");list.add("の");list.add("は");
+        list.add("ば");list.add("ぱ");list.add("ひ");list.add("び");list.add("ぴ");list.add("ふ");list.add("ぶ");list.add("ぷ");list.add("へ");
+        list.add("べ");list.add("ぺ");list.add("ほ");list.add("ぼ");list.add("ぽ");
+        list.add("ま");list.add("み");
+        list.add("む");list.add("め");list.add("も");
 
+        list.add("や");list.add("ゆ");list.add("よ");
+        list.add("ら");list.add("り");list.add("る");list.add("れ");list.add("ろ");
+
+        list.add("わ");
+
+        list.add("を");
+
+        Collections.shuffle(list);
+        String word = list.get(0);
         return Shiritori.shiritori(word, json);
     }
 }

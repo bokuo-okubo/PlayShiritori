@@ -22,7 +22,6 @@ public class JsonHandler  extends Controller {
         try{
             HashMap<String,Set<String>> result = mapper.readValue(jsonStr,
                     new TypeReference<HashMap<String,Set<String>>>(){} );
-            System.out.println(result);
             return result;
         }catch (JsonParseException e){
             System.out.println(e);
