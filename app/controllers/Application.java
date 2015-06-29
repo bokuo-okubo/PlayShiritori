@@ -64,20 +64,20 @@ public class Application extends Controller {
         Map json = jh.parse(str);
         ArrayList<String> list = new ArrayList<String>();
         list.add("あ");list.add("い");list.add("う");list.add("え");list.add("お");
-        list.add("か");list.add("が");list.add("き");list.add("ぎ");list.add("く");list.add("ぐ");list.add("け");list.add("げ");list.add("こ");list.add("ご");
-        list.add("さ");list.add("ざ");list.add("し");list.add("じ");list.add("す");list.add("ず");list.add("せ");list.add("ぜ");list.add("そ");list.add("ぞ");
-        list.add("た");list.add("だ");list.add("ち");list.add("ぢ");list.add("つ");list.add("づ");list.add("て");list.add("で");list.add("と");list.add("ど");
-        list.add("な");list.add("に");list.add("ぬ");list.add("ね");list.add("の");list.add("は");
-        list.add("ば");list.add("ぱ");list.add("ひ");list.add("び");list.add("ぴ");list.add("ふ");list.add("ぶ");list.add("ぷ");list.add("へ");
-        list.add("べ");list.add("ぺ");list.add("ほ");list.add("ぼ");list.add("ぽ");
-        list.add("ま");list.add("み");
-        list.add("む");list.add("め");list.add("も");
-
+        list.add("が");list.add("ぎ");list.add("ぐ");list.add("げ");list.add("ご");
+        list.add("か");list.add("き");list.add("く");list.add("け");list.add("こ");
+        list.add("さ");list.add("し");list.add("す");list.add("せ");list.add("そ");
+        list.add("ざ");list.add("じ");list.add("ず");list.add("ぜ");list.add("ぞ");
+        list.add("た");list.add("ち");list.add("つ");list.add("て");list.add("と");
+        list.add("だ");list.add("ぢ");list.add("づ");list.add("で");list.add("ど");
+        list.add("な");list.add("に");list.add("ぬ");list.add("ね");list.add("の");
+        list.add("は");list.add("ひ");list.add("ふ");list.add("へ");list.add("ほ");
+        list.add("ば");list.add("び");list.add("ぶ");list.add("べ");list.add("ぼ");
+        list.add("ぱ");list.add("ぴ");list.add("ぷ");list.add("ぺ");list.add("ぽ");
+        list.add("ま");list.add("み");list.add("む");list.add("め");list.add("も");
         list.add("や");list.add("ゆ");list.add("よ");
         list.add("ら");list.add("り");list.add("る");list.add("れ");list.add("ろ");
-
         list.add("わ");
-
         list.add("を");
 
         Collections.shuffle(list);
