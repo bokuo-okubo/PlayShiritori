@@ -40,7 +40,6 @@ public class Application extends Controller {
                 return badRequest("Missing parameter [name]");
             } else {
                 int idStr =json.findPath("post").findPath("account").findPath("id").intValue();
-                /////////////////////////////////////
                 FileHandler fh = new FileHandler();
                 String str = fh.openFile("app/data/dictionary.json");
                 JsonHandler jh = new JsonHandler();
