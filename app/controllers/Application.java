@@ -48,7 +48,7 @@ public class Application extends Controller {
 
                 String reqponseWord = Shiritori.shiritori(message, dictionary);
 
-                String test = " { \"message\": \""+ reqponseWord +",\" \"replyTo\": "+ idStr + "}";
+                String test = " { \"message\": \"" + reqponseWord + "\" , \"replyTo\": "+ idStr + "}";
                 return ok(test);
             }
         }
