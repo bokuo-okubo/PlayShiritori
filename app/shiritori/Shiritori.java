@@ -9,7 +9,6 @@ import java.util.*;
  */
 public class Shiritori extends Controller {
 
-
     public static String shiritori(String word, Map<String,Set<String>> dictionary) {
         //TODO : check the word type カタカナ or ひらがな or the other.
         if ( word == null) {
