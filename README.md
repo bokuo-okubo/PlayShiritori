@@ -21,4 +21,4 @@ $ activator run
 ```
 
 
-after building, your PlayFramework server run in 'localhost:9000'
+after building, your PlayFramework server run in `localhost:9000`
